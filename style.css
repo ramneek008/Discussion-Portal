@@ -1,0 +1,31 @@
+body{
+	background-color: #000000;
+}
+.container{
+	width:80vw;
+	min-width:1000px;
+	margin:auto;
+	background-color: white;
+	min-height:90vh;
+}
+h1{
+	background-color: #008080;
+	color:white;
+	padding:2px 20px;
+	font-weight:500;
+}
+.row{
+	display: flex;
+	min-height:85vh;
+}
+.left{
+	border-right:1px solid #b3b3b3;
+	width:40vw;
+	min-width:400px;
+	display: flex;
+	flex-direction: column;
+}
+.right{
+	width:60vw;
+	min-width:600px;
+}
