@@ -53,10 +53,32 @@ li h3{
 	min-width:600px;
 }
 
-#portal{
+#portal, #response_portal{
 	width:80%;
 	margin:auto;
 }
+
+#response_portal h3{
+	color:#595959;
+}
+
+#question_head h3{
+	color:black;
+}
+#question_head p{
+	color:#404040;
+}
+
+h2{
+	font-weight: 700;
+	letter-spacing: 1px;
+	font-size:32px;
+}
+
+h4{
+	font-weight: 400;
+}
+
 input[type=text],textarea{
 	padding:7px;
 	border:1px solid #b3b3b3;
@@ -79,7 +101,56 @@ button{
 	font-size:15px;
 	color:white;
 }
-#submit_ques{
+
+#submit_ques, #resolve, #submit_res{
 	float: right;
 	margin-bottom: 20px;
+}
+
+#newQues{
+	margin-right: 20px;
+}
+
+
+.hide{
+	display:none;
+}
+.show{
+	display:block;
+}
+
+#question_head
+{
+	padding:1px 20px;
+	background-color: #F5F5F5;
+	margin-bottom: 10px;
+}
+
+#responses{
+	margin-top:50px;
+}
+#add_responses h2{
+	font-size:17px;
+	letter-spacing: 0.5px;
+}
+
+#name_res{
+	width:50%;
+}
+#comment_res{
+	margin:10px 0;
+	width:97.5%;
+}
+#res_list{
+	background-color: #F5F5F5;
+	padding:0.5px;
+}
+#res_list li{
+	padding:1px 20px;
+	color:#404040;
+}
+#res_list h3{
+	font-size:15px;
+	font-weight:600;
+	color:black;
 }

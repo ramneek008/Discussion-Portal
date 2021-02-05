@@ -1,7 +1,16 @@
 var ul_ques = document.getElementById("ques_list");
 
 var id=1;
+
 var questions = [];
+
+var newQues = document.getElementById("newQues");
+newQues.addEventListener("click", showQuestionForm);
+
+function showQuestionForm(){
+	document.getElementById("portal").setAttribute("class", "show");
+	document.getElementById("response_portal").setAttribute("class", "hide");
+}
 
 var submit_ques = document.getElementById("submit_ques");
 
@@ -39,10 +48,47 @@ function addQuestion(){
 		questions.push(object);
 		id++;
 
-		localStorage.setItem("questions",JSON.stringify(questions));
-		localStorage.setItem("id",JSON.stringify(id));
 		showQuestions();
 	}
+}
+
+function showQuestionInfo(){
+	let id_sel = this.getAttribute("id");
+	document.getElementById("portal").setAttribute("class", "hide");
+	document.getElementById("response_portal").setAttribute("class", "show");
+	let j=0;
+	for(j=0;j<questions.length;j++)
+	{
+		if(questions[j].id==id_sel)
+			break;
+	}
+	let question_head = document.getElementById("question_head");
+	let h3_qh = document.createElement("h3");
+	let p_qh = document.createElement("p");
+	question_head.innerHTML="";
+	h3_qh.innerHTML = questions[j].subject;
+	p_qh.innerHTML = questions[j].question;
+	question_head.appendChild(h3_qh);
+	question_head.appendChild(p_qh);
+
+	let resolve = document.getElementById("resolve");
+	resolve.onclick = () => resolveQuestion(j);
+
+	showResponses(j);
+
+	// Use onclick to overwrite the function. addEventListener keeps on appending functions. 
+
+	let submit_res = document.getElementById("submit_res");
+	submit_res.onclick = () => addResponse(j);
+
+}
+
+
+function resolveQuestion(id){
+	questions.splice(id,1);
+
+	showQuestions();
+	showQuestionForm();
 }
 
 function filter()
