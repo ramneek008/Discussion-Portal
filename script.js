@@ -91,6 +91,41 @@ function resolveQuestion(id){
 	showQuestionForm();
 }
 
+var ul_res = document.getElementById("res_list");
+
+function showResponses(id){
+	ul_res.innerHTML="";
+	questions[id].responses.forEach((res) => {
+		let li_res = document.createElement("li");
+		let h3_res = document.createElement("h3");
+		let p_res = document.createElement("p");
+		h3_res.innerHTML = res.name;
+		p_res.innerHTML = res.comment;
+		li_res.appendChild(h3_res);
+		li_res.appendChild(p_res);
+		ul_res.appendChild(li_res);
+	});
+}
+
+function addResponse(id){
+	//console.log(id);
+	let object_res = {};
+	let name_res = document.getElementById("name_res").value;
+	let comment_res = document.getElementById("comment_res").value;
+	if(name_res!=="" && comment_res!==""){
+		document.getElementById("name_res").value="";
+		document.getElementById("comment_res").value="";
+
+		object_res.name = name_res;
+		object_res.comment = comment_res;
+
+		questions[id].responses.push(object_res);
+
+		showResponses(id);
+	}
+	
+}
+
 function filter()
 {
 	let text = document.getElementById("search").value.toLowerCase();
