@@ -1,8 +1,22 @@
 var ul_ques = document.getElementById("ques_list");
 
+// localStorage.removeItem("id");
+// localStorage.removeItem("questions");
+
 var id=1;
+var localId = localStorage.getItem("id");
+if(localId){
+	id=JSON.parse(localId);
+}
 
 var questions = [];
+var localQuestions = localStorage.getItem("questions");
+if(localQuestions){
+	questions=JSON.parse(localQuestions);
+}
+
+console.log(localId);
+//console.log(localQuestions);
 
 var newQues = document.getElementById("newQues");
 newQues.addEventListener("click", showQuestionForm);
@@ -48,6 +62,8 @@ function addQuestion(){
 		questions.push(object);
 		id++;
 
+		localStorage.setItem("questions",JSON.stringify(questions));
+		localStorage.setItem("id",JSON.stringify(id));
 		showQuestions();
 	}
 }
@@ -87,6 +103,8 @@ function showQuestionInfo(){
 function resolveQuestion(id){
 	questions.splice(id,1);
 
+	localStorage.setItem("questions",JSON.stringify(questions));
+
 	showQuestions();
 	showQuestionForm();
 }
@@ -120,6 +138,8 @@ function addResponse(id){
 		object_res.comment = comment_res;
 
 		questions[id].responses.push(object_res);
+
+		localStorage.setItem("questions",JSON.stringify(questions));
 
 		showResponses(id);
 	}
